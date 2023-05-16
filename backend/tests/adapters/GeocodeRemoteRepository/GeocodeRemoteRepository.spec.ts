@@ -1,9 +1,9 @@
-import { RemoteRepository } from '@/adapters/RemoteRepository/RemoteRepository';
+import { GeocodeRemoteRepository } from '@/adapters/GeocodeRemoteRepository/GeocodeRemoteRepository';
 import { type Geolocation } from '@/types/Geolocation';
 import { describe, test, expect, beforeEach } from 'vitest';
 
 describe(
-  'RemoteRepository spec',
+  'GeocodeRemoteRepository spec',
   () => {
 
     const unexistentCity = 'wwwwwww';
@@ -91,11 +91,11 @@ describe(
       }
     ];
 
-    let repo: RemoteRepository;
+    let repo: GeocodeRemoteRepository;
 
     beforeEach(() => {
 
-      repo = new RemoteRepository();
+      repo = new GeocodeRemoteRepository();
     
     });
 

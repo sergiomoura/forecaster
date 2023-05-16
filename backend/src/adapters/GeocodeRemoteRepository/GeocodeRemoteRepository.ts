@@ -1,20 +1,20 @@
 import { Errors } from '@/errors/Errors';
 import { type Geolocation } from '@/types/Geolocation';
-import { type Repository } from '@/types/Repository';
+import { type GeocodeRepository } from '@/types/GeocodeRepository';
 import jsonValidator from '@/utils/JsonValidator';
 import GeocodeResponseSchema from './GeocodeResponse.schema.json';
 import { type GeocodeResponse } from './GeocodeResponse';
 import { GeocodeResponseToGeoocation } from './GeocodeResponseToGeolocation';
 
-const QUERY_URL = 'https://geocode.maps.co/search?';
+const GEOCODE_QUERY_URL = 'https://geocode.maps.co/search?';
 
-export class RemoteRepository implements Repository {
+export class GeocodeRemoteRepository implements GeocodeRepository {
 
   async getLocationsFromCity (city: string, country?: string | undefined): Promise<Geolocation[]> {
 
     const url = country === undefined
-      ? `${QUERY_URL}q=${city}`
-      : `${QUERY_URL}city=${city}&country=${country}`;
+      ? `${GEOCODE_QUERY_URL}q=${city}`
+      : `${GEOCODE_QUERY_URL}city=${city}&country=${country}`;
 
     let response: Response;
     try {
