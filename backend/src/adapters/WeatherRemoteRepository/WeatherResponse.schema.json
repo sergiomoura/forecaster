@@ -1,0 +1,33 @@
+{
+  "$id":"/schemas/WeatherResponse",
+  "type": "object",
+  "properties": {   
+    "current_weather":{
+      "type":"object",
+      "properties": {
+        "temperature": {
+          "type":"number"
+        },
+        "windspeed": {
+          "type":"number"
+        },
+        "winddirection": {
+          "type":"number"
+        },
+        "weathercode": {
+          "type":"number"
+        },
+        "is_day": {
+          "type": "boolean"
+        },
+        "time": {
+          "type":"string",
+          "format": "date-time"
+        }
+
+      },
+      "required": ["temperature", "windspeed", "winddirection", "weathercode", "is_day", "time"]
+    }
+  },
+  "required": ["current_weather"]
+}

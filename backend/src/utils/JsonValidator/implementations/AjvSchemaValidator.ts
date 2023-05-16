@@ -3,18 +3,19 @@ import { type ValidationResult } from '@/utils/JsonValidator/ValidationResult';
 import Ajv from 'ajv';
 
 export class AjvSchemaValidator implements JsonValidator {
-
+  
+  private readonly dateTimeRegex = /^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9])$/;
   private readonly ajv: Ajv;
-  private readonly emailFormat: RegExp = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
 
   constructor () {
 
     this.ajv = new Ajv({
       discriminator: true,
-      formats: {
-        email: this.emailFormat
-      },
       coerceTypes: true
+    });
+
+    this.ajv.addFormat('date-time', {
+      validate: (dateTimeString) => this.dateTimeRegex.test(dateTimeString)
     });
   
   }
