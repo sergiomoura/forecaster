@@ -1,9 +1,9 @@
 ✔ Exibir dados do clima @done(23-05-17 12:17)
 ✔ Exibir sugestões de outras cidades @done(23-05-17 12:34)
 ✔ Carregar dados de outra cidade a partir do click @done(23-05-17 12:44)
+✔ Redigir README.md @done(23-05-17 13:41)
 ☐ Fazer com que carregue por padrão a previsão do tempo de Anápolis
+☐ Fix: Mostrar corretamente o nome da cidade corretamente quando busca pelas coordenadas
 ☐ Exibir animação enquanto informação trafega
 ☐ Publicar no Fly
-☐ Enviar email avisando que acabou
-☐ Tratar exibição de mensagem quando nenhuma cidade é encontrada ou qualquer outro erro
-☐ Redigir README.md
+☐ Exibição de mensagem quando nenhuma cidade é encontrada ou qualquer outro erro
