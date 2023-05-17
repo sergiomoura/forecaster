@@ -9,7 +9,7 @@ export enum EventTypes {
 export type Event = { type: EventTypes }
 export type OnFormSubmittedEvent = Event & { city: string }
 
-type EventHandler = (evt: Event) => void
+export type EventHandler = (evt: Event) => void
 
 class SystemEventHubClass {
 
