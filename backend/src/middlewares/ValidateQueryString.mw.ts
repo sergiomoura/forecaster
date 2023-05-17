@@ -9,6 +9,7 @@ export class ValidateQueryString implements Middleware {
     
     if (request.query === undefined) {
 
+      console.log('aqui');
       return FailedResponses.badRequest;
     
     }
@@ -18,6 +19,7 @@ export class ValidateQueryString implements Middleware {
 
     if ((hasCity && hasLatLon) || (!hasCity && !hasLatLon)) {
 
+      console.log('aqui1');
       return FailedResponses.badRequest;
     
     }
@@ -25,8 +27,9 @@ export class ValidateQueryString implements Middleware {
     const isNumeric = /^(-)?\d+(\.\d+)?$/;
     const latNotNumeric = !isNumeric.test(<string>request.query.lat);
     const lonNotNumeric = !isNumeric.test(<string>request.query.lon);
-    if (latNotNumeric || lonNotNumeric) {
+    if (!hasCity && (latNotNumeric || lonNotNumeric)) {
       
+      console.log('aqui2');
       return FailedResponses.badRequest;
     
     }
