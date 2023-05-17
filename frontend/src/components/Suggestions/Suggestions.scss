@@ -1,0 +1,36 @@
+#suggestions {
+
+  margin-bottom: 1rem;
+
+  span {
+    font-size: 0.8rem;
+    color: #66666675;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 5px 5px 0;
+  }
+
+  a {
+    display: inline-block;
+    padding: 5px;
+    text-decoration: none;
+    background-color: #66666675;;
+    font-size: 0.65rem;
+    color: #FFF;
+    border-radius: 5px;
+  }
+
+  a:hover {
+    background-color: #666666c2;;
+  }
+}

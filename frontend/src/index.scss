@@ -1,10 +1,10 @@
 :root {
   --background-color: #212121;
-  --background-transparent:  #000000e6;
+  --background-transparent:  #ffffff6b;
   --light-transparent: #ffffffcc;
   --primary: #3c00c8;
   --light-primary: #5000fa;
-  --default-font-color: #cccccc;
+  --default-font-color: #666666;
   --warn-color: #c78100;
   --light-warn-color: #ee9b00;
 }
@@ -25,9 +25,12 @@ body {
   background-color: var(--background-color);
   color: var(--default-font-color);
   height: 100%;
-  background-image: url(./assets/bg.jpg);
+  background-image: url(./assets/clear-sky.jpg);
   background-size:cover;
   background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 body::before {
@@ -41,9 +44,4 @@ body::before {
   position: fixed;
   left: 0;
   top: 0;
-}
-
-
-#root {
-  height: 100%;
 }

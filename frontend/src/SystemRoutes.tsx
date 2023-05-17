@@ -4,7 +4,6 @@ import { Home } from './pages/Home/Home'
 
 export function SystemRoutes (): JSX.Element {
 
-
   const router = createBrowserRouter([
 
     {

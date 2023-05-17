@@ -1,0 +1,51 @@
+#weather-card {
+
+  .city {
+    font-size: 1.6rem;
+    margin: 0;
+    margin-bottom: 0.2rem;
+  }
+
+  .country {
+    font-size: 1.1rem;
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  .grid{
+    display: grid;
+    grid-template-columns: 100px 160px 1fr;
+    grid-template-areas: "icon temp weatherMessage"
+                         "icon temp wint-speed";
+                         gap: 10px;
+
+    .weather-icon {
+      width: 100px;
+      grid-area: icon;
+      padding: 10px 0;
+    }
+
+    .temperature {
+      font-size: 80px;
+      grid-area: temp;
+      padding: 10px 0;
+      position: relative;
+
+      span {
+        font-size: 48px;
+      }
+    }
+
+    .weather-message {
+      grid-area: weatherMessage;
+    }
+
+    .wind-speed {
+      span {
+        font-size: 0.8rem;
+      }
+    }
+
+  }
+
+}
