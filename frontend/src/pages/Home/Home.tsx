@@ -35,6 +35,8 @@ export function Home (): JSX.Element {
     }
   )
 
+  const defaultCity = 'Anápolis'
+
   const {
     SystemEventHub,
     SystemServices
@@ -71,10 +73,11 @@ export function Home (): JSX.Element {
 
     }
   )
+
   return (
         <main id="home">
 
-            <Form defaultCity="Anápolis" />
+            <Form defaultCity={defaultCity} />
 
             {weatherResponse.suggestedLocations.length > 0 && <Suggestions locations={weatherResponse.suggestedLocations.slice(0, 4)} />}
 
