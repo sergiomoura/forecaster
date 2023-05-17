@@ -1,11 +1,11 @@
 import { Errors } from '@/errors/Errors';
 import { type Coordinates } from '@/types/Coordinates';
-import { type MeteoroligicalCondition } from '@/types/MeteoroligicalCondition';
+import { type Weather } from '@/types/Weather';
 import { type WeatherRepository } from '@/types/WeatherRepository';
 import WeatherResponseSchema from './WeatherResponse.schema.json';
 import jsonValidator from '@/utils/JsonValidator';
 import { type WeatherResponse } from './WeatherResponse';
-import { WeatherResponseToMetorologic } from './WeatherResponseToMetorologic';
+import { mapResponseToWeather } from './WeatherResponseToMetorologic';
 
 const BASE_URL = 'https://api.open-meteo.com/v1/forecast';
 
@@ -17,7 +17,7 @@ const WEATHER_QUERY_URL = (lat: number, lon: number): string => {
 
 export class WeatherRemoteRepository implements WeatherRepository {
 
-  async getMeteologicFromCoordinates (coordinates: Coordinates): Promise<MeteoroligicalCondition> {
+  async getWeatherFromCoordinates (coordinates: Coordinates): Promise<Weather> {
 
     const response = await fetch(WEATHER_QUERY_URL(coordinates.lat, coordinates.lon));
     if (response.status !== 200) throw Errors.failedToReachWeatherService;
@@ -25,7 +25,7 @@ export class WeatherRemoteRepository implements WeatherRepository {
     const data = await response.json();
     const validationResult = jsonValidator.validate(WeatherResponseSchema, data);
     if (!validationResult.isValid) throw Errors.invalidDataFromWeatherService;
-    return WeatherResponseToMetorologic(<WeatherResponse>data);
+    return mapResponseToWeather(<WeatherResponse>data);
   
   }
 

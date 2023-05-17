@@ -24,13 +24,13 @@ describe(
       'Should get a valid weather response',
       async () => {
 
-        const meteorologic = await repo.getMeteologicFromCoordinates(coordinates);
+        const weather = await repo.getWeatherFromCoordinates(coordinates);
       
-        expect(meteorologic.isDay).toBeTypeOf('boolean');
-        expect(meteorologic.temperature.value).toBeTypeOf('number');
-        expect(meteorologic.windSpeed.value).toBeTypeOf('number');
-        expect(Object.values(WeatherDictionary)).toContain(meteorologic.weather.msg);
-        expect(Object.keys(WeatherDictionary)).toContain(String(meteorologic.weather.code));
+        expect(weather.isDay).toBeTypeOf('boolean');
+        expect(weather.temperature.value).toBeTypeOf('number');
+        expect(weather.windSpeed.value).toBeTypeOf('number');
+        expect(Object.values(WeatherDictionary)).toContain(weather.weatherStatus.msg);
+        expect(Object.keys(WeatherDictionary)).toContain(String(weather.weatherStatus.code));
       
       }
     );

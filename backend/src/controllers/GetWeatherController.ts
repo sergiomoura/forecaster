@@ -4,14 +4,14 @@ import { type Request } from '@/types/Request';
 import { type Response } from '@/types/Response';
 import { type Geolocation } from '@/types/Geolocation';
 import { type GetLocationsFromCity } from '@/usecases/GetGeolocationsFromCity.uc';
-import { type GetMeteorologicConditionFromCoordinates } from '@/usecases/GetMeteorologicConditionFromCoordinates.uc';
-import { type MeteoroligicalCondition } from '@/types/MeteoroligicalCondition';
+import { type GetWeatherFromCoordinates } from '@/usecases/GetWeatherFromCoordinates.uc';
+import { type Weather } from '@/types/Weather';
 import { type GetLocationFromCoordinates } from '@/usecases/GetGeolocationsFromCoordinates.uc';
 
 export class GetWeatherController implements Controller {
 
   constructor (
-    private readonly getMeteorologicConditionFromCoordinates: GetMeteorologicConditionFromCoordinates,
+    private readonly getWeatherFromCoordinates: GetWeatherFromCoordinates,
     private readonly getLocationsFromCity: GetLocationsFromCity,
     private readonly getLocationFromCoordinates: GetLocationFromCoordinates
   ) {}
@@ -41,10 +41,10 @@ export class GetWeatherController implements Controller {
 
     if (locations.length === 0) { return FailedResponses.noCityFound; }
 
-    let weather: MeteoroligicalCondition;
+    let weather: Weather;
     try {
       
-      weather = await this.getMeteorologicConditionFromCoordinates.execute(locations[0].coordinates);
+      weather = await this.getWeatherFromCoordinates.execute(locations[0].coordinates);
     
     } catch (error) { return FailedResponses.failedToGetWeather; }
     

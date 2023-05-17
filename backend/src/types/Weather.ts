@@ -1,4 +1,10 @@
+import { type Temperature } from './Temperature';
+import { type WindSpeed } from './WindSpeed';
+import { type WeatherStatus } from './WeatherStatus';
+
 export type Weather = {
-  code: number
-  msg: string
+  weatherStatus: WeatherStatus
+  windSpeed: WindSpeed
+  temperature: Temperature
+  isDay: boolean
 };

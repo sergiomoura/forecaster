@@ -1,6 +1,6 @@
 import { type Coordinates } from './Coordinates';
-import { type MeteoroligicalCondition } from './MeteoroligicalCondition';
+import { type Weather } from './Weather';
 
 export interface WeatherRepository {
-  getMeteologicFromCoordinates: (coordinates: Coordinates) => Promise<MeteoroligicalCondition>
+  getWeatherFromCoordinates: (coordinates: Coordinates) => Promise<Weather>
 }
