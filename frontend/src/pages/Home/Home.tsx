@@ -11,7 +11,7 @@ export function Home (): JSX.Element {
   return (
         <main id="home">
 
-            <Form />
+            <Form defaultCity="Anápolis" />
 
             <Suggestions />
 
