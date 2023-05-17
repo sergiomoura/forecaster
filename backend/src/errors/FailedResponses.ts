@@ -14,6 +14,13 @@ export const FailedResponses = {
   noCityFound: <Response> {
     status: 404,
     body: 'Nenhuma cidade encontrada.'
+  },
+
+  badRequest: <Response> {
+    status: 400,
+    body: 'Sua querystring deve ter um dos formatos:' +
+           'city={nomeDaCidade} ou lat={x}&lon={y}' +
+           'com x e y numéricos'
   }
 
 };
