@@ -10,10 +10,17 @@ import { GetLocationFromCoordinates } from './usecases/GetGeolocationsFromCoordi
 import { GetWeatherFromCoordinates } from './usecases/GetWeatherFromCoordinates.uc';
 import { WebApp } from './utils/WebApp';
 
+const weatherRepository = new WeatherRemoteRepository();
+const geocodeRepository = new GeocodeRemoteRepository();
+
+const getWeatherFromCoordinates = new GetWeatherFromCoordinates(weatherRepository);
+const getLocationsFromCity = new GetLocationsFromCity(geocodeRepository);
+const getLocationFromCoordinates = new GetLocationFromCoordinates(geocodeRepository);
+
 const getWeatherController = new GetWeatherController(
-  new GetWeatherFromCoordinates(new WeatherRemoteRepository()),
-  new GetLocationsFromCity(new GeocodeRemoteRepository()),
-  new GetLocationFromCoordinates(new GeocodeRemoteRepository())
+  getWeatherFromCoordinates,
+  getLocationsFromCity,
+  getLocationFromCoordinates
 );
 
 const routes: Route[] = [
