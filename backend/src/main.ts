@@ -1,3 +1,4 @@
+import { Environment } from './Environment';
 import { GeocodeRemoteRepository } from './adapters/GeocodeRemoteRepository/GeocodeRemoteRepository';
 import { WeatherRemoteRepository } from './adapters/WeatherRemoteRepository/WeatherRemoteRepository';
 import { GetWeatherController } from './controllers/GetWeatherController';
@@ -22,4 +23,4 @@ const routes: Route[] = [
 ];
 
 WebApp.setRoutes(routes);
-WebApp.listen(5000);
+WebApp.listen(Environment.getPort());
