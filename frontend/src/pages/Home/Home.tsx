@@ -22,7 +22,7 @@ export function Home (): JSX.Element {
         state: '',
         substate: ''
       },
-      suggestions: [],
+      suggestedLocations: [],
       weather: {
         isDay: true,
         temperature: { unit: '°C', value: 0 },
@@ -47,7 +47,12 @@ export function Home (): JSX.Element {
 
         SystemServices.getWeatherFromCity(evt.city)
           .then(
-            wr => { setWeatherResponse(wr) }
+            wr => {
+
+              console.log(wr)
+              setWeatherResponse(wr)
+
+            }
           )
           .catch(
             err => { console.error(err) }
@@ -70,7 +75,7 @@ export function Home (): JSX.Element {
 
             <Form defaultCity="Anápolis" />
 
-            <Suggestions />
+            {weatherResponse.suggestedLocations.length > 0 && <Suggestions locations={weatherResponse.suggestedLocations.slice(0, 4)} />}
 
             <WeatherCard weather={weatherResponse.weather} location={weatherResponse.location}/>
         </main>

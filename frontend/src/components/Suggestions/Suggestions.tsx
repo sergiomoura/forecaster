@@ -1,13 +1,26 @@
+import { type Geolocation } from '../../types/Geolocation'
 import './Suggestions.scss'
-export function Suggestions (): JSX.Element {
+
+type SuggestionsProps = {
+  locations: Geolocation[]
+}
+export function Suggestions (props: SuggestionsProps): JSX.Element {
+
+  function onLocationClick (location: Geolocation): void {
+
+    console.log(location)
+
+  }
 
   return (
     <div id="suggestions">
       <span> Você quis dizer...</span>
       <ul>
-        <li><a href="#">Salvador, Bahia - Brasil</a></li>
-        <li><a href="#">Salvador, Bahia - Brasil</a></li>
-        <li><a href="#">Salvador, Bahia - Brasil</a></li>
+        {
+          props.locations.map(
+            location => <li key={location.id}><a onClick={evt => { evt.preventDefault(); onLocationClick(location) }}>{location.city}, {location.state} - {location.country}</a></li>
+          )
+        }
       </ul>
     </div>
   )

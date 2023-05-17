@@ -4,5 +4,5 @@ import { type Weather } from './Weather'
 export type WeatherResponse = {
   weather: Weather
   location: Geolocation
-  suggestions: Geolocation[]
+  suggestedLocations: Geolocation[]
 }
