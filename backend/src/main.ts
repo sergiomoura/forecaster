@@ -5,12 +5,14 @@ import { GetWeatherController } from './controllers/GetWeatherController';
 import { HttpMethod } from './types/HttpMethod';
 import { type Route } from './types/Route';
 import { GetLocationsFromCity } from './usecases/GetGeolocationsFromCity.uc';
+import { GetLocationFromCoordinates } from './usecases/GetGeolocationsFromCoordinates.uc';
 import { GetMeteorologicConditionFromCoordinates } from './usecases/GetMeteorologicConditionFromCoordinates.uc';
 import { WebApp } from './utils/WebApp';
 
 const getWeatherController = new GetWeatherController(
   new GetMeteorologicConditionFromCoordinates(new WeatherRemoteRepository()),
-  new GetLocationsFromCity(new GeocodeRemoteRepository())
+  new GetLocationsFromCity(new GeocodeRemoteRepository()),
+  new GetLocationFromCoordinates(new GeocodeRemoteRepository())
 );
 
 const routes: Route[] = [

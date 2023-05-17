@@ -1,0 +1,13 @@
+{
+  
+  "$id":"/schemas/GeodecodeResponse",
+  "type":"object",
+  "properties": {
+    "place_id": {"type": "number"},
+    "display_name":{"type":"string"},
+    "lon": {"type": "number"},
+    "lat": {"type": "number"}
+  },
+  "required": ["place_id", "display_name", "lon", "lat"]
+  
+}

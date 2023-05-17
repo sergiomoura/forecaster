@@ -1,5 +1,5 @@
 {
-  "$id":"/schemas/GeocodeResponse",
+  "$id":"/schemas/GeoencodeResponse",
   "type": "array",
   "items": {
     "type":"object",
