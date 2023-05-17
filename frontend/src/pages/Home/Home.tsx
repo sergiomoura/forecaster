@@ -11,13 +11,23 @@ import { EventTypes, type EventHandler, type OnFormSubmittedEvent } from '../../
 
 export function Home (): JSX.Element {
 
-  const { SystemEventHub } = useContext(Context)
+  const {
+    SystemEventHub,
+    SystemServices
+  } = useContext(Context)
+
   useEffect(
     () => {
 
       function handleFormSubmitted (evt: OnFormSubmittedEvent): void {
 
-        console.log(evt.city)
+        SystemServices.getWeatherFromCity(evt.city)
+          .then(
+            weatherResponse => { console.log(weatherResponse) }
+          )
+          .catch(
+            err => { console.error(err) }
+          )
 
       }
 
