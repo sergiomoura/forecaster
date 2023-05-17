@@ -1,14 +1,25 @@
+import { useContext } from 'react'
 import { type Geolocation } from '../../types/Geolocation'
 import './Suggestions.scss'
+import { Context } from '../../Context'
+import { EventTypes, type OnLocationClickedEvent } from '../../SystemEventHub'
 
 type SuggestionsProps = {
   locations: Geolocation[]
 }
+
 export function Suggestions (props: SuggestionsProps): JSX.Element {
+
+  const { SystemEventHub } = useContext(Context)
 
   function onLocationClick (location: Geolocation): void {
 
-    console.log(location)
+    const onLocationClickEvent: OnLocationClickedEvent = {
+      type: EventTypes.locationClicked,
+      location
+    }
+
+    SystemEventHub.emit(onLocationClickEvent)
 
   }
 

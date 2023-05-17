@@ -1,13 +1,16 @@
 import { Errors } from './Errors'
+import { type Geolocation } from './types/Geolocation'
 
 export enum EventTypes {
 
   formSubmitted = 'formSubmitted',
+  locationClicked = 'locationClicked'
 
 }
 
 export type Event = { type: EventTypes }
 export type OnFormSubmittedEvent = Event & { city: string }
+export type OnLocationClickedEvent = Event & { location: Geolocation }
 
 export type EventHandler = (evt: Event) => void
 
@@ -18,7 +21,8 @@ class SystemEventHubClass {
   constructor () {
 
     this.listeners = {
-      formSubmitted: []
+      formSubmitted: [],
+      locationClicked: []
     }
 
   }
